@@ -2,8 +2,7 @@
 
 using namespace std;
 
-// g++ .\practice_pointer.cpp -o practice_pointer
-// .\practice_pointer.exe
+// [PowerShell] g++ .\practice_pointer.cpp -o practice_pointer | ./practice_pointer
 
 void ptr_declare(){
 // Declare pointer
@@ -48,13 +47,51 @@ void ptr_calculation(){
     cout << "[Get array length]" << endl << "end:" << *end(arr) << endl << "begin:" << *begin(arr) << endl << "Array length:" << end(arr) - begin(arr) << endl;
 
     cout << "[Get array length2]" << endl << arr << arr+1 << endl << (&arr) << (&arr)+1 << endl << *(&arr+1)-arr;
+}
 
+void bi_ptr(){
+    // Bi-pointer
+    int n = 10;
+    int *n_ptr = &n;
+    int **n_ptr_ptr = &n_ptr;
 
+    cout << "[Bi-pointer]" << endl << "Address(n_ptr):" << n_ptr << endl << "Address(n_ptr_ptr):" << n_ptr_ptr << endl << endl;
+
+    // pointer with array
+    constexpr int LENGTH = 10;
+    long double arr[LENGTH] = {20.1111111,30,30,30,30,90,71,513,10.1211111,1199.19456};
+    int len = *(&arr+1) - arr;
+    cout << "[Pointer LENGTH]" << endl 
+        << "LENGTH:" << len << endl
+        << "*(&arr+1):" << *(&arr+1) << endl
+        << "arr:" << arr << endl << endl;
+
+    // Matrix
+    int matrix[2][3]={{5,3,1},{2,4,6}};
+    // int (*p)[3] = matrix;
+    auto p = matrix;
+    cout << "[Matrix]" << endl;
+    for(int i =0;i<6;i++){
+        cout << *((*p)+i) << endl;
+    }
+
+}
+
+void ptr_string(){
+    const char *t = "Hello world!";
+    cout << "[Add const before char*]" << endl << t << endl;
+
+    const char *names[] = {"Danny", "Bob", "Rober"};
+    cout << "[Pointer for array of string]" << endl;
+    for (auto n: names) {
+        cout << n << endl;
+    }
 }
 
 int main(){
     // ptr_declare();
-    ptr_calculation();
-    
+    // ptr_calculation();
+    // bi_ptr();
+    ptr_string();
     return 0;
 }
