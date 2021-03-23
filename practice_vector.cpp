@@ -165,10 +165,22 @@ void ex_vector(){
     cout << endl;
 }
 
+void var_input(vector<int> args){
+    for(auto arg : args){
+        cout << arg << endl;
+    }
+}
+
 int main(){
     // ex_string();
     // ex_array();    
     // test_array();
-    ex_vector();
+    // ex_vector();
+    vector<int> myarg;
+    myarg.push_back(5);
+    myarg.push_back(9);
+    myarg.push_back(1);
+    
+    var_input(myarg);
     return 0;
 }
